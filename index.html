@@ -116,12 +116,13 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .source a { color: var(--ink); }
 
 /* ---------- quiz ---------- */
-#quiz, #result { padding: 22px 24px 28px; }
+#quiz { padding: 14px 22px 18px; }
+#result { padding: 22px 24px 28px; }
 .bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-family: var(--f-brush); }
 .bar .qno { font-size: 20px; letter-spacing: .08em; }
 .bar .score { font-size: 18px; }
 .bar .score b { font-family: var(--f-body); font-size: 24px; color: var(--seal); font-variant-numeric: tabular-nums; }
-.dots { display: flex; gap: 6px; margin: 12px 0 0; }
+.dots { display: flex; gap: 6px; margin: 8px 0 0; }
 .dots i { flex: 1; height: 5px; border-radius: 3px; background: var(--line); }
 .dots i.ok { background: var(--good); }
 .dots i.no { background: var(--bad); }
@@ -129,11 +130,11 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .dots i.now { background: var(--ink); }
 
 .word {
-  margin: 22px auto 6px; display: grid; grid-template-columns: auto auto auto; justify-content: center; align-items: end; gap: 14px 4px;
+  margin: 12px auto 0; display: grid; grid-template-columns: auto auto auto; justify-content: center; align-items: end; gap: 8px 4px;
 }
-.word .han { font-family: var(--f-brush); font-size: clamp(54px, 16vw, 82px); line-height: 1; text-align: center; padding-bottom: 8px; border-bottom: 3px solid transparent; }
+.word .han { font-family: var(--f-brush); font-size: clamp(46px, 13vw, 64px); line-height: 1; text-align: center; padding-bottom: 6px; border-bottom: 3px solid transparent; }
 .word .han.now { border-bottom-color: var(--seal); }
-.word .rom { font-family: var(--f-lo); font-size: clamp(34px, 9.5vw, 46px); line-height: 1.2; text-align: center; white-space: nowrap; }
+.word .rom { font-family: var(--f-lo); font-size: clamp(32px, 9vw, 42px); line-height: 1.15; text-align: center; white-space: nowrap; }
 .word .hy { color: var(--ink-soft); }
 .blank {
   position: relative; display: inline-block; min-width: .7em; padding: 0 1px; text-align: center;
@@ -145,31 +146,29 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .blank.no { color: var(--bad); border-color: var(--bad); }
 .blank s { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); font-weight: 400; font-size: .5em; color: var(--ink-soft); }
 
+.ask-row { display: flex; align-items: center; justify-content: center; gap: 8px 14px; flex-wrap: wrap; margin: 10px 0 10px; min-height: 44px; }
 .play {
-  display: flex; align-items: center; gap: 10px; margin: 14px auto 4px; padding: 10px 20px;
+  display: flex; align-items: center; gap: 8px; padding: 8px 16px; flex: none;
   background: transparent; border: 1px solid var(--ink); border-radius: 999px; font-family: var(--f-brush); font-size: 18px;
 }
 .play svg { width: 22px; height: 22px; }
 .play.on { background: var(--ink); color: var(--paper); }
 
-.prompt { text-align: center; font-family: var(--f-brush); font-size: 18px; margin: 16px 0 10px; letter-spacing: .06em; }
-.keys { display: grid; gap: 10px; }
-.krow { display: grid; grid-template-columns: 4.2em 1fr; gap: 8px; align-items: center; }
-.krow .gname { font-size: 15px; color: var(--ink-soft); text-align: right; letter-spacing: .08em; }
-.kbtns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.prompt { font-family: var(--f-brush); font-size: 19px; letter-spacing: .04em; text-align: center; }
+.prompt.ok { color: var(--good); }
+.prompt.no { color: var(--bad); }
+.prompt .lo { font-size: 20px; }
+.keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .key {
-  font-family: var(--f-lo); font-size: 34px; font-weight: 700; line-height: 1.1; padding: 12px 0; color: var(--ink);
+  font-family: var(--f-lo); font-size: 34px; font-weight: 700; line-height: 1.1; padding: 7px 0; color: var(--ink);
   background: #fffdf7; border: 2px solid #b9ab92; border-radius: 6px; transition: transform .1s, background .15s, border-color .15s;
 }
 .key:hover:not(:disabled) { border-color: var(--ink); background: #fff; }
 .key:active:not(:disabled) { transform: translateY(1px); }
 .key:disabled { opacity: .55; cursor: default; }
 
-.feedback { min-height: 30px; text-align: center; margin: 14px 0 0; font-size: 17px; }
-.feedback.ok { color: var(--good); }
-.feedback.no { color: var(--bad); }
-.next-row { display: flex; justify-content: center; margin-top: 10px; }
-.next-row .btn-main { min-width: 60%; }
+.keys .next { grid-column: span 3; padding: 7px 0; font-size: 24px; }
+.keys .next[hidden] { display: block !important; visibility: hidden; }
 
 /* ---------- result ---------- */
 .res-head { display: grid; justify-items: center; gap: 4px; margin: 8px 0 18px; text-align: center; }
@@ -209,8 +208,6 @@ tr.cur td { background: #f0e4c8; }
 @media (max-width: 440px) {
   .title-block { padding: 78px 16px 0 30%; }
   .cover-panel, #quiz, #result { padding-left: 18px; padding-right: 18px; }
-  .krow { grid-template-columns: 1fr; gap: 4px; }
-  .krow .gname { text-align: left; }
   .key { font-size: 30px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
@@ -331,14 +328,14 @@ tr.cur td { background: #f0e4c8; }
     </div>
     <div class="dots" id="dots"></div>
     <div class="word" id="word"></div>
+    <div class="ask-row">
     <button class="play" id="playBtn" type="button">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       聽音檔
     </button>
-    <div class="prompt" id="prompt"></div>
+    <div class="prompt" id="prompt" aria-live="polite"></div>
+    </div>
     <div class="keys" id="keys"></div>
-    <div class="feedback" id="feedback" aria-live="polite"></div>
-    <div class="next-row"><button class="btn-main" id="nextBtn" type="button" hidden>下一題</button></div>
   </section>
 
   <!-- ===== result ===== -->
@@ -449,11 +446,9 @@ tr.cur td { background: #f0e4c8; }
     $('word').innerHTML =
       `<span class="han" id="han0">${w.h[0]}</span><span></span><span class="han" id="han1">${w.h[1]}</span>` +
       `<span class="rom">${rom(0)}</span><span class="rom hy">-</span><span class="rom">${rom(1)}</span>`;
-    $('keys').innerHTML = GROUPS.map(([g, ks]) => `<div class="krow"><span class="gname">${g}</span><div class="kbtns">${
-      ks.map(k => `<button type="button" class="key" data-k="${k}">${k}</button>`).join('')
-    }</div></div>`).join('');
-    $('feedback').textContent = ''; $('feedback').className = 'feedback';
-    $('nextBtn').hidden = true;
+    $('keys').innerHTML = GROUPS.flatMap(([, ks]) => ks).map(k => `<button type="button" class="key" data-k="${k}">${k}</button>`).join('') +
+      '<button type="button" class="btn-main next" id="nextBtn" hidden>下一題</button>';
+    $('prompt').className = 'prompt';
     markCurrent();
     play(w.id, $('playBtn'));
   }
@@ -488,8 +483,8 @@ tr.cur td { background: #f0e4c8; }
       el.innerHTML = a === picks[j] ? a : `<s>${picks[j]}</s>${a}`;
     });
     $('scoreNow').textContent = score;
-    $('feedback').className = 'feedback ' + (n === PER_Q ? 'ok' : 'no');
-    $('feedback').innerHTML = (n === PER_Q ? '兩个攏答對！' : n ? '答對一个。' : '兩个攏毋著。') +
+    $('prompt').className = 'prompt ' + (n === PER_Q ? 'ok' : 'no');
+    $('prompt').innerHTML = (n === PER_Q ? '兩个攏答對！' : n ? '答對一个。' : '兩个攏毋著。') +
       `＋${n * PTS} 分　<span class="lo">${w.s.join('-')}</span>`;
     $('nextBtn').textContent = idx + 1 < ROUND ? '下一題' : '看成績';
     $('nextBtn').hidden = false;
@@ -546,8 +541,10 @@ tr.cur td { background: #f0e4c8; }
   $('historyBtn').onclick = showHistory;
   $('homeBtn').onclick = () => { renderBest(); show('cover'); };
   $('playBtn').onclick = () => play(round[idx].id, $('playBtn'));
-  $('keys').onclick = e => { const b = e.target.closest('.key'); if (b && !b.disabled) answer(b.dataset.k); };
-  $('nextBtn').onclick = () => { idx++; idx < ROUND ? renderQ() : finish(); };
+  $('keys').onclick = e => {
+    if (e.target.closest('#nextBtn')) { idx++; idx < ROUND ? renderQ() : finish(); return; }
+    const b = e.target.closest('.key'); if (b && !b.disabled) answer(b.dataset.k);
+  };
   $('review').onclick = e => { const b = e.target.closest('.say'); if (b) play(results[b.dataset.i].w.id); };
   // in-page confirmation (dialogs are unavailable in the viewer)
   $('clearZone').onclick = e => {
